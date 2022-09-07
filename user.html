@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/users-list.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">Admin</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>ユーザー情報</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="users-list.html" class="active">
+              <i class="bi bi-circle"></i><span>ユーザー一覧</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <script>
+              window.onload=function () {
+              var para = window.location.search;
+              //document.write(para.split(/[=&]/)[3]);
+              var X_name = decodeURIComponent(para.split(/[=&]/)[1]);
+              //var X_date = moment((para.split(/[=&]/)[3]),'YYYY-MM-DD')
+              //https://stackoverflow.com/questions/6982692/how-to-set-input-type-dates-default-value-to-today
+              var X_date = para.split(/[=&]/)[5];
+              //var X_date = "1992-02-03";
+              //var X_date = new Date(para.split(/[=&]/)[3]).toISOString().substring(0, 10);
+              var X_phone = para.split(/[=&]/)[7];
+              var X_sex = para.split(/[=&]/)[3];
+              var X_mail = para.split(/[=&]/)[9];
+
+              document.getElementById("sname").value = X_name;
+              document.getElementById("sdate").value = X_date;
+              //document.write(typeof(X_date)==typeof("1992-02-03"));
+              document.getElementById("snum").value = X_phone;
+              if (X_sex == 1)
+                  document.getElementById("smen").checked = true;
+              else if (X_sex == 0)
+                  document.getElementById("swomen").checked = true;
+
+              document.getElementById("smail").value = X_mail;
+  
+          }
+  </script>
+
+  <main id="main" class="main">
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class ="card-title">ユーザー詳細</h5>
+              <a href="./users-list.html">/ユーザー一覧</a>
+              <!-- Default Table -->
+              <table class="table">
+                <tbody>
+                  <form name="form">
+                  <tr>
+                    <td>氏名<p style="color: red;">*</p></td>
+                    <td><input type="text" id="sname" name="name"></td>
+                 </tr>
+                  <tr>
+                    <td>性別<p style="color: red;">*</p></td>
+                    <td><input type="radio" id="smen" name="sex">男</td>
+                    <td><input type="radio" id="swomen" name="sex">女</td>
+                  </tr>
+                  <tr>
+                    <td>生年月日<p style="color: red;">*</p></td>
+                    <td><input type="date" id="sdate" name="birthday"></td>
+                  </tr>
+                  <tr>
+                    <td>電話番号<p style="color: red;">*</p></td>
+                    <td><input type="num" id="snum" name="num"></td>
+                  </tr>
+                  <tr>
+                    <td>メールアドレス<p style="color: red;">*</p></td>
+                    <td><input type="mail" id="smail" name="mail"></td>
+                  </tr>
+                  <tr>
+                    <td><button type="button" onclick="reset()">クリア</button></td>
+                    <td><button type="button" onclick="update()">更新</button></td>
+                  </tr>
+                </form>
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
+
+<script>
+  function reset(){
+    document.form.reset();
+  }
+  function update(){
+    location.href="./users-list.html";
+  }
+</script>

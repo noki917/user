@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/users-list.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">Admin</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header --> 
+
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>ユーザー情報</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="users-list.html" class="active">
+              <i class="bi bi-circle"></i><span>ユーザー一覧</span>
+            
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">ユーザー一覧</h5>
+                <form method="get" action="">
+                  <table style="  margin: 0 auto;
+                  margin-left: 20%;
+                  width: 100%;">
+                    <thead>
+                      <tr>
+                        <td></td>
+                        <td>（部分一致）</td>
+                        <td colspan="2"></td>
+                        <td>（部分一致）</td>
+                      </tr>
+                    </thead>
+                    <tr>
+                    <script src="search.js"></script>
+                      <td>
+                         氏名</td><td colspan="2"><div id="name"></div><input type="text" id="s_name" name=""></div></td>
+
+                      <td>メールアドレス</td><td colspan="2"><input type="text" id="s_mail" name=""></td>
+                    </tr>
+                    <tr>
+                      <td colspan="4"></td>
+                      <td colspan="1">
+                        <input type="reset" value="条件クリア" id="button2" class="button_gray">
+                        <input type="button" value="検索" id="button" class="button_green">
+                       </td>
+                    </tr>
+                </table>
+              </form>
+
+              <!-- Default Table -->
+              <table class="table" border="1" style="border-collapse: collapse" id="data">
+                <thead>
+                  <tr class="table-header">
+                    <th scope="col"></th>
+                    <th scope="col">氏名</th>
+                    <th scope="col">性別</th>
+                    <th scope="col">生年月日</th>
+                    <th scope="col">電話番号</th>
+                    <th scope="col">メールアドレス</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>
+                        <button id="select_1" class="button_gray" onclick="select('田中太郎','1','1980-08-01','09011112222','tanaka.taro@mail.com')">
+                          選択
+                        </button>
+                      </td>
+                      <td name="t_n"> 田中太郎</td>
+                      <td>男</td>
+                      <td>1980-08-01</td>
+                      <td>09011112222</td>
+                      <td name="t_m">tanaka.taro@mail.com</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button id="select_2" class="button_gray"onclick="select('田中次郎','1','1981-09-01','09011113333','tanaka.jiro@mail.com')" >
+                        選択
+                      </button>
+                    </td>
+                    <td name="t_n">田中次郎</td>
+                    <td>男</td>
+                    <td>1981-09-01</td>
+                    <td>09011113333</td>
+                    <td name="t_m">tanaka.jiro@mail.com</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button id="select_3" class="button_gray" >
+                        選択
+                      </button>
+                    </td>
+                    <td name="t_n">田中0</td>
+                    <td>女</td>
+                    <td>1981-10-01</td>
+                    <td>1234567</td>
+                    <td name="t_m">tanaka0.jiro@mail.com</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button id="select_4" class="button_gray" >
+                        選択
+                      </button>
+                    </td>
+                    <td name="t_n">田中1</td>
+                    <td>男</td>
+                    <td>1981-02-01</td>
+                    <td>346272456</td>
+                    <td name="t_m">tanaka1.jiro@mail.com</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button id="select_5" class="button_gray" >
+                        選択
+                      </button>
+                    </td>
+                    <td name="t_n">田中2</td>
+                    <td>男</td>
+                    <td>1981-06-01</td>
+                    <td>643335156</td>
+                    <td name="t_m">tanaka2.jiro@mail.com</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button id="select_6" class="button_gray"onclick="select('テスト太郎','0','1981-09-01','275267246','test@test.com')" >
+                        選択
+                      </button>
+                    </td>
+                    <td name="t_n">テスト太郎</td>
+                    <td>女</td>
+                    <td>1981-09-01</td>
+                    <td>275267246</td>
+                    <td name="t_m">test@test.com</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<script>
+  function select(name,sex,bir,tel,mail){
+    location.href="user.html?name="+name+"&sex="+sex+"&bir="+bir+"&tel="+tel+"&mail="+mail;
+  }
+</script>
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
